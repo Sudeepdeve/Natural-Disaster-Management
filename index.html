@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landslide & Disaster Detection System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+:root{
+ --primary:#0f3460;--secondary:#16213e;
+ --accent-green:#00d4aa;--accent-blue:#0099ff;
+ --light-bg:#f0f4f8;--border:#e5e7eb;
+ --shadow:0 8px 24px rgba(0,0,0,0.12);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:Poppins,sans-serif;background:#f0f4f8;color:#1a2332;}
+
+nav{
+ position:fixed;top:0;width:100%;z-index:1000;
+ background:rgba(15,52,96,.95);color:#fff;padding:16px 30px;
+ display:flex;justify-content:space-between;align-items:center;
+}
+nav .menu{display:flex;gap:40px;}
+nav a{text-decoration:none;color:#fff;font-size:15px;position:relative;}
+nav a:hover{color:var(--accent-green);}
+nav .menu-toggle{display:none;font-size:28px;border:0;background:none;color:#fff;}
+
+@media(max-width:768px){
+ .menu{position:absolute;top:65px;left:0;width:100%;
+ background:var(--primary);flex-direction:column;text-align:center;
+ padding:20px;display:none;}
+ .menu.show{display:flex;}
+ .menu-toggle{display:block;}
+}
+
+/* HERO */
+.hero{
+ height:100vh;
+ background:
+  linear-gradient(135deg,rgba(15,52,96,0.75),rgba(22,33,62,0.75)),
+  url("2.jpg") center/cover no-repeat;
+ display:flex;justify-content:center;align-items:center;text-align:center;color:#fff;padding:0 10%;
+}
+
+section{padding:80px 10%;}
+.section-title{font-size:36px;text-align:center;font-weight:800;margin-bottom:30px;}
+
+.cards,.hardware,.gallery{
+ display:grid;gap:20px;
+ grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+.card,.hw,.gallery-item{
+ background:#fff;padding:24px;border-radius:14px;border:1px solid var(--border);
+ box-shadow:var(--shadow);
+}
+.hw{text-align:center;transition:.3s;}
+.hw:hover{transform:translateY(-6px);border-color:var(--accent-green);}
+
+table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;margin-top:20px;}
+th,td{padding:14px;border-bottom:1px solid var(--border);}
+th{background:var(--primary);color:#fff;text-align:left;}
+
+.timeline{padding:20px 0;border-left:4px solid var(--accent-green);}
+.step{padding:16px 24px;margin:12px 0;background:#fff;border-radius:10px;}
+
+.btn-dl{
+ display:inline-block;padding:10px 18px;margin-top:10px;
+ background:var(--accent-green);color:#fff;border-radius:6px;text-decoration:none;
+ font-weight:600;
+}
+
+.gallery-item img{
+ width:100%;border-radius:12px;object-fit:cover;height:200px;
+}
+
+.video-box{display:flex;justify-content:center;}
+.video-box iframe,.video-box video{
+ width:100%;max-width:800px;height:450px;border-radius:14px;
+ box-shadow:var(--shadow);
+}
+
+footer{
+ background:linear-gradient(135deg,var(--primary),var(--secondary));
+ color:#fff;padding:30px;text-align:center;margin-top:60px;
+}
+
+/* ⭐ TEAM SECTION */
+.team{
+ display:grid;gap:22px;
+ grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+ margin-top:40px;
+}
+.member{
+ background:#fff;border-radius:14px;padding:22px;
+ text-align:center;box-shadow:var(--shadow);
+ border:1px solid var(--border);
+ transition:.3s;
+}
+.member:hover{
+ transform:translateY(-6px);
+ border-color:var(--accent-blue);
+}
+.member img{
+ width:120px;height:120px;border-radius:50%;
+ object-fit:cover;margin-bottom:12px;
+ border:4px solid var(--accent-green);
+}
+.member h3{margin-bottom:6px;font-size:20px;font-weight:700;}
+.member p{font-size:14px;color:#526273;}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+ <img src="LOGO.png" width="200px">
+ <button class="menu-toggle"><i class="fa fa-bars"></i></button>
+ <div class="menu">
+   <a href="#hero">Home</a>
+   <a href="#objective">Objective</a>
+   <a href="#hardware">Hardware</a>
+   <a href="#data">Data</a>
+   <a href="#flow">Flow</a>
+   <a href="#reports">Reports</a>
+   <a href="#gallery">Photos</a>
+   <a href="#video">Video</a>
+   <a href="#team">Team</a>
+ </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+ <div>
+   <h1>Integrated Natural Diaster Management System</h1>
+   <p>Real Time Fire | landslide | Flood | Detection System </p>
+ </div>
+</section>
+
+<!-- OBJECTIVES -->
+<section id="objective">
+ <h2 class="section-title">Project Objectives</h2>
+ <div class="cards">
+   <div class="card"><h3>Predict Landslides</h3><p>Monitor soil moisture, tilt & water levels.</p></div>
+   <div class="card"><h3>Automatic SMS Alerts</h3><p>Sends warnings to avoid casualties.</p></div>
+   <div class="card"><h3>All-Weather System</h3><p>Works day/night in rural areas.</p></div>
+ </div>
+</section>
+
+<!-- HARDWARE -->
+<section id="hardware" style="background:#f5f8fb;">
+ <h2 class="section-title">Hardware Components</h2>
+ <div class="hardware">
+   <div class="hw"><i class="fa-solid fa-microchip fa-2x"></i><h4>Arduino UNO</h4></div>
+   <div class="hw"><i class="fa-solid fa-tower-broadcast fa-2x"></i><h4>SIM800L GSM</h4></div>
+   <div class="hw"><i class="fa-solid fa-water fa-2x"></i><h4>Soil Sensor</h4></div>
+   <div class="hw"><i class="fa-solid fa-fire fa-2x"></i><h4>Flame Detector</h4></div>
+   <div class="hw"><i class="fa-solid fa-angle-up fa-2x"></i><h4>Tilt Sensor</h4></div>
+ </div>
+</section>
+
+<!-- DATA -->
+<section id="data">
+ <h2 class="section-title">Realtime Status</h2>
+ <table>
+   <tr><th>Sensor</th><th>Value</th><th>Status</th></tr>
+   <tr><td>Soil Moisture</td><td>53%</td><td style="color:green;">Safe</td></tr>
+   <tr><td>Tilt</td><td>14°</td><td style="color:orange;">Warning</td></tr>
+   <tr><td>Flame</td><td>Detected</td><td style="color:red;">Danger</td></tr>
+ </table>
+</section>
+
+<!-- FLOW -->
+<section id="flow" style="background:#eef4f7;">
+ <h2 class="section-title">System Flow</h2>
+ <div class="timeline">
+   <div class="step"><h4>1️⃣ Sensors Read Data</h4></div>
+   <div class="step"><h4>2️⃣ Arduino Checks Threshold</h4></div>
+   <div class="step"><h4>3️⃣ GSM Sends SMS + Alarm</h4></div>
+   <div class="step"><h4>4️⃣ Community Receives Warning</h4></div>
+ </div>
+</section>
+
+<!-- REPORTS -->
+<section id="reports">
+ <h2 class="section-title">Project Reports</h2>
+ <div class="cards">
+   <div class="card">
+     <h3>📄 Proposal Report</h3>
+     <p>Objective, problem statement & tools.</p>
+     <a href="proposal.pdf" class="btn-dl" download>Download</a>
+   </div>
+   <div class="card">
+     <h3>📘 Mid-Term Report</h3>
+     <p>Hardware setup, coding & testing.</p>
+     <a href="midterm.pdf" class="btn-dl" download>Download</a>
+   </div>
+   <div class="card">
+     <h3>📕 Final Project Report</h3>
+     <p>Analysis, results, challenges & future scope.</p>
+     <a href="final.pdf" class="btn-dl" download>Download</a>
+   </div>
+ </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#f5f8fb;">
+ <h2 class="section-title">Photo Gallery</h2>
+ <div class="gallery">
+   <div class="gallery-item"><img src="2.jpg" alt=""></div>
+   <div class="gallery-item"><img src="3.jpg" alt=""></div>
+   <div class="gallery-item"><img src="3.jpg" alt=""></div>
+ </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+ <h2 class="section-title">Project Demo Video</h2>
+ <div class="video-box">
+  <video controls >
+  <source src="video.mp4">
+ </video>
+ </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" style="background:#eef4f7;">
+ <h2 class="section-title">Meet Our Team</h2>
+
+ <div class="team">
+   <div class="member">
+     <img src="sudeep.jpg" alt="Sudeep">
+     <h3>Sudeep Lamichhane</h3>
+     <p>System Design & Developer</p>
+   </div>
+
+   <div class="member">
+     <img src="st.jpg" alt="Sworup">
+     <h3>Sworup Tiwari</h3>
+     <p>Hardware & Testing Lead</p>
+   </div>
+
+   <div class="member">
+     <img src="rr.jpg" alt="RR Oli">
+     <h3>RR Oli</h3>
+     <p>Research & Documentation</p>
+   </div>
+ </div>
+</section>
+
+<footer>© 2026 Amar Singh College — Integrated Project Team</footer>
+
+<script>
+document.querySelector(".menu-toggle").onclick=()=>(document.querySelector(".menu").classList.toggle("show"));
+</script>
+
+</body>
+</html>
