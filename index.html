@@ -124,8 +124,8 @@ footer{
    <a href="#hero">Home</a>
    <a href="#objective">Objective</a>
    <a href="#hardware">Hardware</a>
-   <a href="#data">Data</a>
    <a href="#flow">Flow</a>
+   <a href="#data">Data</a>
    <a href="#reports">Reports</a>
    <a href="#gallery">Photos</a>
    <a href="#video">Video</a>
@@ -163,17 +163,6 @@ footer{
  </div>
 </section>
 
-<!-- DATA -->
-<section id="data">
- <h2 class="section-title">Realtime Status</h2>
- <table>
-   <tr><th>Sensor</th><th>Value</th><th>Status</th></tr>
-   <tr><td>Soil Moisture</td><td>53%</td><td style="color:green;">Safe</td></tr>
-   <tr><td>Tilt</td><td>14°</td><td style="color:orange;">Warning</td></tr>
-   <tr><td>Flame</td><td>Detected</td><td style="color:red;">Danger</td></tr>
- </table>
-</section>
-
 <!-- FLOW -->
 <section id="flow" style="background:#eef4f7;">
  <h2 class="section-title">System Flow</h2>
@@ -184,6 +173,30 @@ footer{
    <div class="step"><h4>4️⃣ Community Receives Warning</h4></div>
  </div>
 </section>
+
+<!-- DATA -->
+<section id="data">
+ <h2 class="section-title">Realtime Status</h2>
+<!-- Fire alert -->
+ <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Fire+Alert&type=line"></iframe>
+<!-- Lnd Slide Alert-->
+ <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!-- Soil Moisture -->
+ <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!-- Ultra Sonic Sensor-->
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
+<!-- Earthquake Sensor Tilt Sensor-->
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!--Buzzer Status -->
+ <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/6?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!--Msg sent-->
+ <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/7?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!--Call sent-->
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/8?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+<!--Location Of the Project -->
+<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/maps/channel_show"></iframe>
+</section>
+
 
 <!-- REPORTS -->
 <section id="reports">
@@ -231,24 +244,131 @@ footer{
 <section id="team" style="background:#eef4f7;">
  <h2 class="section-title">Meet Our Team</h2>
 
- <div class="team">
-   <div class="member">
-     <img src="sudeep.jpg" alt="Sudeep">
-     <h3>Sudeep Lamichhane</h3>
-     <p>System Design & Developer</p>
-   </div>
 
-   <div class="member">
-     <img src="st.jpg" alt="Sworup">
-     <h3>Sworup Tiwari</h3>
-     <p>Hardware & Testing Lead</p>
-   </div>
+<style>
+  .container{
+    height: 100vh;
+    width: 100vw;
+    max-height: 800px;
+    max-width: 1200px;
+    min-height: 600px;
+    min-width: 1000px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto;
+}
+.border{
+    height: 369px;
+    width: 290px;
+    background:transparent;
+    border-radius: 10px;
+    transition: border  1s;
+    position: relative;
+}
+.border:hover{
+    border: 1px solid #fff;
+}
+.image-box{
+    height: 379px;
+    width: 300px;
+    background: #808080;
+    border-radius: 10px;
+    transition: background 0.8s;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 70px 63px -60px #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.image-box0{
+    background: url("sudeep.jpg") center center no-repeat;
+    background-size: 300px;
+}
+.image-box0:hover{
+    background: url("sudeep.jpg") left center no-repeat;
+    background-size: 600px;
+}
+.image-box0:hover h2{
+    opacity: 1;
+}
+.image-box0:hover .fa{
+    opacity: 1;
+}
 
-   <div class="member">
-     <img src="rr.jpg" alt="RR Oli">
-     <h3>RR Oli</h3>
-     <p>Research & Documentation</p>
-   </div>
+.image-box1{
+    background: url("rr.jpg") center center no-repeat;
+    background-size: 300px;
+}
+.image-box1:hover{
+    background: url("rr.jpg") left center no-repeat;
+    background-size: 600px;
+}
+.image-box1:hover h2{
+    opacity: 1;
+}
+.image-box1:hover .fa{
+    opacity: 1;
+}
+
+.image-box2{
+    background: url("st.jpg") center center no-repeat;
+    background-size: cover;
+}
+.image-box2:hover{
+    background: url("st.jpg") left center no-repeat;
+    background-size: cover;
+}
+.image-box2:hover h2{
+    opacity: 1;
+}
+.image-box2:hover .fa{
+    opacity: 1;
+}
+
+h2{
+    font-family: 'Helvetica Neue',Arial, Helvetica, sans-serif;
+    color: #1768ffbe;
+    margin: 20px;
+    opacity: 1;
+    transition: opacity 1s;
+}
+h3{
+    font-family: 'Helvetica Neue',Arial, Helvetica, sans-serif;
+    color: #1774ff;
+    margin: 20px;
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+</style>
+<div class="container">
+    <div class="image-box image-box0">
+        <div class="border">
+            <h3>Sudeep Lamichhane </h3>
+           
+        </div>
+    </div>
+
+    <div class="image-box image-box1">
+        <div class="border">
+            <h3>R.R Oli </h3>
+            
+        </div>
+    </div>
+
+    <div class="image-box image-box2">
+        <div class="border">
+            <h3>Swroup Tiwari </h3>
+           
+        </div>
+    </div>
+</div>
+
+
+
  </div>
 </section>
 
