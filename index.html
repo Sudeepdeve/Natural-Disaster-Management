@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                                       
+
 <title>Landslide & Disaster Detection System</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,32 +16,27 @@
  --accent-green:#00d4aa;--accent-blue:#0099ff;
  --light-bg:#f0f4f8;--border:#e5e7eb;
  --shadow:0 8px 24px rgba(0,0,0,0.12);
+ --nav-height:64px;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:Poppins,sans-serif;background:#f0f4f8;color:#1a2332;}
+body{font-family:Poppins,sans-serif;background:#f0f4f8;color:#1a2332;padding-top:var(--nav-height);-webkit-font-smoothing:antialiased;}
 
 nav{
- position:fixed;top:0;width:100%;z-index:1000;
- background:rgba(15,52,96,.95);color:#fff;padding:16px 30px;
- display:flex;justify-content:space-between;align-items:center;
+ position:fixed;top:0;width:100%;z-index:1000;height:var(--nav-height);
+ background:rgba(15,52,96,.95);color:#fff;padding:8px 20px;
+ display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(6px);
 }
+nav img{max-width:140px;height:auto;display:block}
+nav .menu a{padding:10px 8px}
 nav .menu{display:flex;gap:40px;}
 nav a{text-decoration:none;color:#fff;font-size:15px;position:relative;}
 nav a:hover{color:var(--accent-green);}
-nav .menu-toggle{display:none;font-size:28px;border:0;background:none;color:#fff;}
-
-@media(max-width:768px){
- .menu{position:absolute;top:65px;left:0;width:100%;
- background:var(--primary);flex-direction:column;text-align:center;
- padding:20px;display:none;}
- .menu.show{display:flex;}
- .menu-toggle{display:block;}
-}
+nav .menu-toggle{display:none;font-size:28px;border:0;background:none;color:#fff;position:relative;z-index:1101;}
 
 /* HERO */
 .hero{
- height:100vh;
+ min-height:calc(100vh - var(--nav-height));
  background:
   linear-gradient(135deg,rgba(15,52,96,0.75),rgba(22,33,62,0.75)),
   url("2.jpg") center/cover no-repeat;
@@ -77,11 +74,56 @@ th{background:var(--primary);color:#fff;text-align:left;}
  width:100%;border-radius:12px;object-fit:cover;height:200px;
 }
 
-.video-box{display:flex;justify-content:center;}
+.video-box{display:flex;justify-content:center; gap:18px;flex-wrap:wrap;align-items:flex-start}
 .video-box iframe,.video-box video{
- width:100%;max-width:800px;height:450px;border-radius:14px;
+ width:100%;max-width:420px;height:auto;aspect-ratio:16/9;border-radius:12px;
  box-shadow:var(--shadow);
 }
+
+.data-grid{
+ display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(450px,1fr));justify-items:center;margin-top:20px;
+}
+.iframe-container{
+ position:relative;width:100%;max-width:520px;overflow:hidden;border-radius:12px;border:1px solid var(--border);
+}
+.iframe-container iframe{width:100%;height:260px;border:none;border-radius:12px;display:block}
+
+@media(max-width:920px){
+ .data-grid{
+ grid-template-columns:1fr;
+ }
+}
+
+@media(max-width:1024px){
+ section{padding:60px 8%;}
+ .video-box iframe,.video-box video{height:auto;max-width:360px}
+}
+
+@media(max-width:768px){
+ section{padding:50px 5%;}
+ .hero{height:72vh;padding:0 5%;}
+ .section-title{font-size:28px;}
+ .cards,.hardware,.gallery{grid-template-columns:1fr;}
+ .video-box iframe,.video-box video{max-width:320px}
+ nav{padding:10px 15px;}
+ nav .menu{gap:16px;padding:12px;}
+}
+
+@media(max-width:480px){
+ nav{padding:8px 10px;}
+ nav .menu{top:55px;padding:8px;}
+ .hero{height:62vh;padding:0 3%;}
+ .section-title{font-size:22px;margin-bottom:16px;}
+ section{padding:28px 3%;}
+ .cards,.hardware,.gallery{gap:15px;}
+ .card,.hw,.gallery-item{padding:14px;border-radius:10px;}
+ .video-box iframe,.video-box video{max-width:100%;aspect-ratio:16/9}
+ .btn-dl{padding:8px 14px;font-size:13px;}
+}
+
+/* HERO text sizing */
+.hero h1{font-size:clamp(22px,4.5vw,44px);line-height:1.05;margin-bottom:10px;font-weight:800}
+.hero p{font-size:clamp(14px,2.2vw,18px);opacity:0.95}
 
 footer{
  background:linear-gradient(135deg,var(--primary),var(--secondary));
@@ -111,6 +153,23 @@ footer{
 }
 .member h3{margin-bottom:6px;font-size:20px;font-weight:700;}
 .member p{font-size:14px;color:#526273;}
+/* Updated mobile menu styles */
+@media(max-width:768px){
+ .menu{position:fixed;top:72px;left:0;right:0;height:calc(100vh - 72px);z-index:1100;
+ background:var(--primary);flex-direction:column;text-align:center;
+ padding:18px 20px;display:none;overflow:auto;-webkit-overflow-scrolling:touch}
+ .menu.show{display:flex;}
+  /* also show menu when body has menu-open class (JS toggles this) */
+  body.menu-open .menu{display:flex;}
+ .menu a{display:block;padding:14px 10px;font-size:18px;color:#fff;border-bottom:1px solid rgba(255,255,255,0.03)}
+ .menu-toggle{display:block;padding:8px 10px;border-radius:6px}
+ body.menu-open{overflow:hidden}
+}
+
+@media(max-width:480px){
+  :root{--nav-height:56px}
+  nav img{max-width:120px}
+}
 </style>
 </head>
 
@@ -118,19 +177,21 @@ footer{
 
 <!-- NAV -->
 <nav>
- <img src="LOGO.png" width="200px">
- <button class="menu-toggle"><i class="fa fa-bars"></i></button>
- <div class="menu">
-   <a href="#hero">Home</a>
-   <a href="#objective">Objective</a>
-   <a href="#hardware">Hardware</a>
-   <a href="#flow">Flow</a>
-   <a href="#data">Data</a>
-   <a href="#reports">Reports</a>
-   <a href="#gallery">Photos</a>
-   <a href="#video">Video</a>
-   <a href="#team">Team</a>
- </div>
+  <a href="#hero" aria-label="Go to hero section">
+    <img src="LOGO.png" alt="Logo">
+  </a>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-menu"><i class="fa-solid fa-bars"></i></button>
+  <div class="menu" id="main-menu">
+    <a href="#hero">Home</a>
+    <a href="#objective">Objective</a>
+    <a href="#hardware">Hardware</a>
+    <a href="#flow">Flow</a>
+    <a href="#data">Data</a>
+    <a href="#reports">Reports</a>
+    <a href="#gallery">Photos</a>
+    <a href="#video">Video</a>
+    <a href="#team">Team</a>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -145,9 +206,9 @@ footer{
 <section id="objective">
  <h2 class="section-title">Project Objectives</h2>
  <div class="cards">
-   <div class="card"><h3>Predict Landslides</h3><p>Monitor soil moisture, tilt & water levels.</p></div>
-   <div class="card"><h3>Automatic SMS Alerts</h3><p>Sends warnings to avoid casualties.</p></div>
-   <div class="card"><h3>All-Weather System</h3><p>Works day/night in rural areas.</p></div>
+   <div class="card"><h3>Predict Disaster</h3><p>Monitor soil moisture, flame sensor,vibration Sensor & water levels.</p></div>
+   <div class="card"><h3>Automatic Call Alerts</h3><p>Sends warnings to avoid casualties.</p></div>
+   <div class="card"><h3>Real Time Data Update</h3><p>Data is updated in every second through the gsm module so that it can be monitored .</p></div>
  </div>
 </section>
 
@@ -156,7 +217,7 @@ footer{
  <h2 class="section-title">Hardware Components</h2>
  <div class="hardware">
    <div class="hw"><i class="fa-solid fa-microchip fa-2x"></i><h4>Arduino UNO</h4></div>
-   <div class="hw"><i class="fa-solid fa-tower-broadcast fa-2x"></i><h4>SIM800L GSM</h4></div>
+   <div class="hw"><i class="fa-solid fa-tower-broadcast fa-2x"></i><h4>SIM 900A   GSM</h4></div>
    <div class="hw"><i class="fa-solid fa-water fa-2x"></i><h4>Soil Sensor</h4></div>
    <div class="hw"><i class="fa-solid fa-fire fa-2x"></i><h4>Flame Detector</h4></div>
    <div class="hw"><i class="fa-solid fa-angle-up fa-2x"></i><h4>Tilt Sensor</h4></div>
@@ -169,32 +230,25 @@ footer{
  <div class="timeline">
    <div class="step"><h4>1️⃣ Sensors Read Data</h4></div>
    <div class="step"><h4>2️⃣ Arduino Checks Threshold</h4></div>
-   <div class="step"><h4>3️⃣ GSM Sends SMS + Alarm</h4></div>
-   <div class="step"><h4>4️⃣ Community Receives Warning</h4></div>
+   <div class="step"><h4>3️⃣ GSM Gives Call + Transfer Data to Website</h4></div>
+   <div class="step"><h4>4️⃣ Devices And Web Server Receives Warning</h4></div>
  </div>
 </section>
 
 <!-- DATA -->
 <section id="data">
  <h2 class="section-title">Realtime Status</h2>
+ <div class="data-grid">
 <!-- Fire alert -->
- <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Fire+Alert&type=line"></iframe>
+ <div class="iframe-container"><iframe src="https://thingspeak.com/channels/3231261/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Fire+Alert&type=line"></iframe></div>
 <!-- Lnd Slide Alert-->
- <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+ <div class="iframe-container"><iframe src="https://thingspeak.com/channels/3231261/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe></div>
 <!-- Soil Moisture -->
- <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-<!-- Ultra Sonic Sensor-->
-<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
-<!-- Earthquake Sensor Tilt Sensor-->
-<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/5?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-<!--Buzzer Status -->
- <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/6?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-<!--Msg sent-->
- <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/7?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
-<!--Call sent-->
-<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/charts/8?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+ <div class="iframe-container"><iframe src="https://thingspeak.com/channels/3231261/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe></div>
+
 <!--Location Of the Project -->
-<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/3231261/maps/channel_show"></iframe>
+<div class="iframe-container"><iframe src="https://thingspeak.com/channels/3231261/maps/channel_show"></iframe></div>
+ </div>
 </section>
 
 
@@ -203,19 +257,19 @@ footer{
  <h2 class="section-title">Project Reports</h2>
  <div class="cards">
    <div class="card">
-     <h3>📄 Proposal Report</h3>
-     <p>Objective, problem statement & tools.</p>
-     <a href="proposal.pdf" class="btn-dl" download>Download</a>
+     <h3>📄 Hardware Report</h3>
+     
+     <a href="https://drive.google.com/file/d/1vyCgG5aDxBa4VTz7kPzptu4pxAPIPfwu/view?usp=sharing" class="btn-dl" download>View</a>
    </div>
    <div class="card">
-     <h3>📘 Mid-Term Report</h3>
-     <p>Hardware setup, coding & testing.</p>
-     <a href="midterm.pdf" class="btn-dl" download>Download</a>
+     <h3>📘 Report</h3>
+    
+     <a href="https://drive.google.com/file/d/1HgNvZJReiLMT9_92IstfhddsSroqNuVO/view?usp=sharing" class="btn-dl" download>View</a>
    </div>
    <div class="card">
-     <h3>📕 Final Project Report</h3>
-     <p>Analysis, results, challenges & future scope.</p>
-     <a href="final.pdf" class="btn-dl" download>Download</a>
+     <h3>📕 Software Report</h3>
+    
+     <a href="https://drive.google.com/file/d/1oFCn9XzNWzM9keXfCXEyAsOAqs4JwLCl/view?usp=sharing" class="btn-dl" download>View</a>
    </div>
  </div>
 </section>
@@ -226,18 +280,35 @@ footer{
  <div class="gallery">
    <div class="gallery-item"><img src="2.jpg" alt=""></div>
    <div class="gallery-item"><img src="3.jpg" alt=""></div>
-   <div class="gallery-item"><img src="3.jpg" alt=""></div>
+   <div class="gallery-item"><img src="4.jpg" alt=""></div>
+      <div class="gallery-item"><img src="5.jpg" alt=""></div>
+         <div class="gallery-item"><img src="6.jpg" alt=""></div>
  </div>
 </section>
 
 <!-- VIDEO -->
 <section id="video">
- <h2 class="section-title">Project Demo Video</h2>
- <div class="video-box">
-  <video controls >
-  <source src="video.mp4">
- </video>
- </div>
+  <h2 class="section-title">Project Video</h2>
+  <div class="video-box">
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+    <video controls>
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+    <video controls>
+      <source src="video2.mp4" type="video/mp4">
+    </video>
+    <video controls>
+      <source src="video3.mp4" type="video/mp4">
+    </video>
+    <video controls>
+      <source src="video4.mp4" type="video/mp4">
+    </video>
+    <video controls>
+      <source src="video5.mp4" type="video/mp4">
+    </video>
+  </div>
 </section>
 
 <!-- TEAM -->
@@ -247,86 +318,80 @@ footer{
 
 <style>
   .container{
-    height: 100vh;
-    width: 100vw;
-    max-height: 800px;
-    max-width: 1200px;
-    min-height: 600px;
-    min-width: 1000px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px,1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: start;
     margin: 0 auto;
+    padding: 20px;
+    max-width: 760px;
 }
 .border{
-    height: 369px;
-    width: 290px;
     background:transparent;
     border-radius: 10px;
     transition: border  1s;
     position: relative;
 }
+
 .border:hover{
     border: 1px solid #fff;
 }
+.border h3{margin:0;font-size:18px;color:#0a0909;font-weight:700;}
+.border p.role{margin:4px 0 0;color:#804848;font-size:13px;opacity:0.95}
 .image-box{
-    height: 379px;
-    width: 300px;
-    background: #808080;
     border-radius: 10px;
-    transition: background 0.8s;
     overflow: hidden;
-    background: #000;
     box-shadow: 0 70px 63px -60px #000;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
+    height: 340px;
+    width: 240px;
 }
-.image-box0{
+.image-box .border{
+    order: -1;
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    background: rgba(255, 253, 253, 0.6);
+}
+.image-content{
+  flex:1;
+  width:100%;
+  height:280px;
+  transition: background 0.8s ease, transform 0.6s ease;
+}
+.image-content.image-box0{
     background: url("sudeep.jpg") center center no-repeat;
-    background-size: 300px;
+    background-size: cover;
 }
-.image-box0:hover{
+.image-content.image-box0:hover{
     background: url("sudeep.jpg") left center no-repeat;
-    background-size: 600px;
-}
-.image-box0:hover h2{
-    opacity: 1;
-}
-.image-box0:hover .fa{
-    opacity: 1;
+    background-size: 130%;
 }
 
-.image-box1{
-    background: url("rr.jpg") center center no-repeat;
-    background-size: 300px;
+.image-content.image-box1{
+    background: url("rr.jpeg") center center no-repeat;
+    background-size: cover;
 }
-.image-box1:hover{
-    background: url("rr.jpg") left center no-repeat;
-    background-size: 600px;
-}
-.image-box1:hover h2{
-    opacity: 1;
-}
-.image-box1:hover .fa{
-    opacity: 1;
+.image-content.image-box1:hover{
+    background: url("rr.jpeg") left center no-repeat;
+    background-size: 130%;
 }
 
-.image-box2{
+.image-content.image-box2{
     background: url("st.jpg") center center no-repeat;
     background-size: cover;
 }
-.image-box2:hover{
+.image-content.image-box2:hover{
     background: url("st.jpg") left center no-repeat;
-    background-size: cover;
+  background-size: 130%;
 }
-.image-box2:hover h2{
-    opacity: 1;
-}
-.image-box2:hover .fa{
-    opacity: 1;
-}
+
+.image-content:hover{transform:scale(1.02)}
 
 h2{
     font-family: 'Helvetica Neue',Arial, Helvetica, sans-serif;
@@ -342,40 +407,107 @@ h3{
     opacity: 1;
     transition: opacity 1s;
 }
+h4{
+    font-family: 'Helvetica Neue',Arial, Helvetica, sans-serif;
+    color: #38383b;
 
+    opacity: 1;
+    transition: opacity 1s;
+}
+
+@media(max-width:768px){
+ .container{
+    flex-direction: column;
+    gap: 30px;
+ }
+ .image-box{
+    height: 300px;
+    width: 180px;
+ }
+ .image-content{
+    height: 240px;
+ }
+}
+
+@media(max-width:480px){
+ .image-box{
+    height: 260px;
+    width: 140px;
+ }
+ .image-content{
+    height: 200px;
+ }
+ h2, h3{
+    margin: 5px;
+    font-size: 12px;
+ }
+ .iframe-container{
+    max-width:100%;
+    height:220px;
+ }
+}
 </style>
 <div class="container">
-    <div class="image-box image-box0">
-        <div class="border">
-            <h3>Sudeep Lamichhane </h3>
-           
-        </div>
+  <div class="image-box">
+    <div class="border">
+      <h3>Sudeep Lamichhane</h3>
+      <p class="role">Programmer(Developer)</p>
     </div>
+    <div class="image-content image-box0"></div>
+  </div>
 
-    <div class="image-box image-box1">
-        <div class="border">
-            <h3>R.R Oli </h3>
-            
-        </div>
+  <div class="image-box">
+    <div class="border">
+      <h3>R.R Oli</h3>
+      <p class="role">Circuit Designer</p>
     </div>
+    <div class="image-content image-box1"></div>
+  </div>
 
-    <div class="image-box image-box2">
-        <div class="border">
-            <h3>Swroup Tiwari </h3>
-           
-        </div>
+  <div class="image-box">
+    <div class="border">
+      <h3>Swroup Tiwari</h3>
+      <p class="role">Research & Documentation</p>
     </div>
+    <div class="image-content image-box2"></div>
+  </div>
 </div>
-
-
-
- </div>
 </section>
 
-<footer>© 2026 Amar Singh College — Integrated Project Team</footer>
+<footer>Thank You ! For Visiting your Website-Team Amar Singh</footer>
 
 <script>
-document.querySelector(".menu-toggle").onclick=()=>(document.querySelector(".menu").classList.toggle("show"));
+(function(){
+  const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.querySelector('.menu');
+  if(!menuToggle || !menu) return;
+
+  function closeMenu(){
+    menu.classList.remove('show');
+    menuToggle.setAttribute('aria-expanded','false');
+    document.body.classList.remove('menu-open');
+  }
+
+  menuToggle.addEventListener('click', (e) => {
+    const opened = menu.classList.toggle('show');
+    menuToggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
+    document.body.classList.toggle('menu-open', opened);
+  });
+
+  // close when a menu link is clicked
+  document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click', closeMenu));
+
+  // close on escape
+  document.addEventListener('keyup', e => { if(e.key === 'Escape') closeMenu(); });
+
+  // close when clicking/touching outside nav
+  ['click','touchstart'].forEach(evt => {
+    document.addEventListener(evt, (e) => {
+      if(!menu.classList.contains('show')) return;
+      if(!e.target.closest('nav')) closeMenu();
+    }, {passive:true});
+  });
+})();
 </script>
 
 </body>
